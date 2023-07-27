@@ -450,8 +450,10 @@ for (var i = 0; i < AddToCarBtn.length; i++) {
     AddToCarBtn[i].addEventListener("click", function () {
         const ProductCardsName = document.getElementsByClassName("product-name");
         const ProductCardsColor = document.getElementsByClassName("product-color");
+        var ProductCardsPrice = document.getElementsByClassName("price-table");
         for(var i = 0; i < ProductCardsName.length; i++){
-            if(ProductCardsName[i].innerText == PhoneNameOnHtml && ProductCardsColor[i].innerText == PhoneColorOnHtml){
+            
+            if(ProductCardsName[i].innerText == PhoneNameOnHtml && ProductCardsColor[i].innerText == PhoneColorOnHtml && ProductCardsPrice[i].innerText.replace("R$", "") == PriceGalaxyS23){
                 ProductCardsName[i].parentElement.parentElement.parentElement.parentElement.parentElement.children[2].children[0].children[1].innerText++;
                 return;
             }
@@ -568,5 +570,3 @@ function updateTotal() { // update the total price
     document.getElementById("total-price").innerHTML = 'R$' + TotalValue.toFixed(2);
     document.getElementById("subtotal-price").innerHTML = 'R$' + TotalValue.toFixed(2);
 }
-
-
