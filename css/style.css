@@ -321,7 +321,7 @@ img#galaxyS23-img-modal-presetation{
     margin-top: 2vh;
 }
 
-button.addToCar-btn{
+button#addToCar-btn{
     padding: 2% 10%;
     font-size: 1vw;
     font-weight: 600;
@@ -330,7 +330,7 @@ button.addToCar-btn{
     background: linear-gradient(to bottom, #FCD200, #FFD814);
 }
 
-button.addToCar-btn:hover{
+button#addToCar-btn:hover{
     background: linear-gradient(to bottom, #ebc406, #debc12);
 }
 
