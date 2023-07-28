@@ -5,12 +5,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    /* cursor: pointer; */
 }
 
 header{
     position: sticky;
     top: 0;
     z-index: 900;
+    cursor: pointer;
 }
 
 nav{
@@ -25,14 +27,15 @@ nav{
     width: 7vw;
 }
 
-.mid-items a{
+.mid-items span{
     margin-left: 3vw;
 }
 
-nav a{
+nav span{
     font-weight: 400;
     text-decoration: none;
     color: black;
+    font-size: 1.2vw;
 }
 
 .right-items{
@@ -142,6 +145,21 @@ h1#title-galaxyS23{
 
 .price-galaxyS23{
     display: flex;
+}
+
+#totalProductsNumber{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #4BAEF6;
+    position: fixed;
+    margin-left: 9vw;
+    margin-bottom: 4vh;
+    font-size: .7vw;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button.buy-product-btn{

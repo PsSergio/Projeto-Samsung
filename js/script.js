@@ -445,9 +445,22 @@ HeaderItemToOpenModalCarrinho.addEventListener("click", function () {
     ModalCarrinhoContainer.style.display = 'block';
 })
 
+function TotalProductsValidation(){
+    if(TotalProductsOnHtml.innerText == 0){
+        TotalProductsOnHtml.style.display = 'none';
+    }else if(TotalProductsOnHtml.innerText > 0){
+        TotalProductsOnHtml.style.display = 'flex';
+    }
+    console.log(TotalProductsOnHtml.innerText)
+}
+
+var TotalProducts = 0;
+var TotalProductsOnHtml = document.getElementById("totalProductsNumber");
 var AddToCarBtn = document.getElementsByClassName("buy-product-btn");
+TotalProductsOnHtml.style.display = 'none';
 for (var i = 0; i < AddToCarBtn.length; i++) {
     AddToCarBtn[i].addEventListener("click", function () {
+        TotalProductsOnHtml.style.display = 'flex';
         const ProductCardsName = document.getElementsByClassName("product-name");
         const ProductCardsColor = document.getElementsByClassName("product-color");
         var ProductCardsPrice = document.getElementsByClassName("price-table");
@@ -455,6 +468,11 @@ for (var i = 0; i < AddToCarBtn.length; i++) {
             
             if(ProductCardsName[i].innerText == PhoneNameOnHtml && ProductCardsColor[i].innerText == PhoneColorOnHtml && ProductCardsPrice[i].innerText.replace("R$", "") == PriceGalaxyS23){
                 ProductCardsName[i].parentElement.parentElement.parentElement.parentElement.parentElement.children[2].children[0].children[1].innerText++;
+                TotalProducts++;
+                TotalProductsOnHtml.innerText = TotalProducts;
+                if(TotalProducts > 99){
+                    TotalProductsOnHtml.innerText = 99 + '+';
+                }
                 return;
             }
         }
@@ -466,7 +484,7 @@ for (var i = 0; i < AddToCarBtn.length; i++) {
             `
             <td class="info-product-td">
             <div class="info-product-container">
-                <div class="remove-product-container">
+                <div class="remove-product-container"> 
                     <i class="fa-regular fa-circle-xmark" style="color: #575757;"></i>
                 </div>
                 <div class="info-product-content">
@@ -496,6 +514,11 @@ for (var i = 0; i < AddToCarBtn.length; i++) {
             `;
         const TableBody = document.querySelector("tbody");
         TableBody.appendChild(newCartProduct);
+        TotalProducts++;
+        TotalProductsOnHtml.innerText = TotalProducts;
+        if(TotalProducts > 99){
+            TotalProductsOnHtml.innerText = 99 + '+';
+        }
         updateTotal();
     })
 }
@@ -508,15 +531,30 @@ document.addEventListener("click", (e) =>{
 
     if(targetEl.classList.contains("fa-sort-up")){
         QtyValue.innerText++;
-        
+        TotalProducts++;
+        TotalProductsOnHtml.innerText = TotalProducts;
+        if(TotalProducts > 99){
+            TotalProductsOnHtml.innerText = 99 + '+';
+        }
+        TotalProductsValidation();
     }else if(targetEl.classList.contains("fa-sort-down")){
         QtyValue.innerText--;
+        TotalProducts--;
+        TotalProductsOnHtml.innerText = TotalProducts;
         if (QtyValue.innerText == 0) {
             QtyValue.parentElement.parentElement.parentElement.remove();
         }
+        if(TotalProducts > 99){
+            TotalProductsOnHtml.innerText = 99 + '+';
+        }
+        TotalProductsValidation();
     }else if(targetEl.classList.contains("fa-circle-xmark")){
         targetEl.parentElement.parentElement.parentElement.parentElement.remove();
+        TotalProductsOnHtml.innerText = 0;
+        TotalProductsValidation();
+
     }
+    
     updateTotal();
 })
 
