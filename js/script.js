@@ -14,14 +14,13 @@ var ArrayPhoneContainer = 0;
 
 var QualificationPhone = document.getElementsByClassName("qualification-number-modal")[0];
 
-var a = false;
 
 for (var i = 0; i < PhonesContainerArray.length; i++) {
     PhonesContainerArray[i].addEventListener('click', (event) => {
 
         OpColorsGalaxyS23Val = 2;
         ModalContainer.style.display = 'block';
-
+        PhoneColorOnHtml = 'Preto';
         OpColorsGalaxyS23[0].style.borderLeft = '1px solid #BDBDBD';
         OpColorsGalaxyS23[2].style.borderLeft = '1px solid #BDBDBD';
         OpColorsGalaxyS23[3].style.borderLeft = '1px solid #BDBDBD';
